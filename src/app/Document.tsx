@@ -1,4 +1,4 @@
-import { ColorSchemeScript, MantineProvider } from "@mantine/core"
+import { ColorSchemeScript } from "@mantine/core"
 
 export const Document: React.FC<{ children: React.ReactNode }> = ({ children }) => (
   <html lang="en">
@@ -10,9 +10,7 @@ export const Document: React.FC<{ children: React.ReactNode }> = ({ children }) 
       <link rel="modulepreload" href="/src/client.tsx" />
     </head>
     <body>
-      <div id="root">
-        <MantineProvider>{children}</MantineProvider>
-      </div>
+      <div id="root">{children}</div>
       <script>import("/src/client.tsx")</script>
     </body>
   </html>
