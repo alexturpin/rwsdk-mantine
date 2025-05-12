@@ -1,9 +1,10 @@
-import { RequestInfo } from "rwsdk/worker";
+import { Title } from "@mantine/core"
+import { RequestInfo } from "rwsdk/worker"
 
 export function Home({ ctx }: RequestInfo) {
   return (
     <div>
-      <h1>Hello World</h1>
+      <Title order={1}>Hello World</Title>
     </div>
-  );
+  )
 }
