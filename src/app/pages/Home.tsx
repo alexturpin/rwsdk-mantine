@@ -1,3 +1,5 @@
+"use client"
+
 import { Title } from "@mantine/core"
 import { RequestInfo } from "rwsdk/worker"
 import { MantineLayout } from "../layouts/MantineLayout"
