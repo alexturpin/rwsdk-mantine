@@ -1,9 +1,12 @@
 export const Document: React.FC<{ children: React.ReactNode }> = ({ children }) => (
-  <html lang="en">
+  <html lang="en" data-mantine-color-scheme="dark">
     <head>
       <meta charSet="utf-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1" />
       <title>@redwoodjs/starter-minimal</title>
+
+      <link rel="stylesheet" href="https://unpkg.com/@mantine/core@8.0.0/styles.css" />
+
       <link rel="modulepreload" href="/src/client.tsx" />
     </head>
     <body>
