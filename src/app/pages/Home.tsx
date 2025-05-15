@@ -1,15 +1,17 @@
 "use client"
 
-import { Title } from "@mantine/core"
-import { RequestInfo } from "rwsdk/worker"
-import { MantineLayout } from "../layouts/MantineLayout"
+import { PageLayout } from "~/app/layouts/PageLayout"
+import { Button, Title } from "@mantine/core"
+import { useState } from "react"
 
-export function Home({ ctx }: RequestInfo) {
+export const Home = () => {
+  const [count, setCount] = useState(0)
   return (
-    <MantineLayout>
+    <PageLayout>
       <div>
         <Title order={1}>Hello World</Title>
+        <Button onClick={() => setCount(count + 1)}>Increment {count}</Button>
       </div>
-    </MantineLayout>
+    </PageLayout>
   )
 }
