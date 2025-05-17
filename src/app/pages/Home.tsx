@@ -1,17 +1,28 @@
 "use client"
 
-import { PageLayout } from "~/app/layouts/PageLayout"
 import { Button, Title } from "@mantine/core"
-import { useState } from "react"
+import { useMutation, useQuery } from "@tanstack/react-query"
+import { PageLayout } from "~/app/layouts/PageLayout"
+import { queryClient, trpc } from "~/app/trpc-client"
 
 export const Home = () => {
-  const [count, setCount] = useState(0)
   return (
     <PageLayout>
       <div>
         <Title order={1}>Hello World</Title>
-        <Button onClick={() => setCount(count + 1)}>Increment {count}</Button>
+        <IncrementButton />
       </div>
     </PageLayout>
   )
+}
+
+const IncrementButton = () => {
+  const getValue = useQuery(trpc.getValue.queryOptions())
+  const incrementValue = useMutation(
+    trpc.incrementValue.mutationOptions({
+      onSuccess: () => queryClient.invalidateQueries({ queryKey: trpc.getValue.queryKey() }),
+    })
+  )
+
+  return <Button onClick={() => incrementValue.mutate()}>Increment {getValue.data}</Button>
 }

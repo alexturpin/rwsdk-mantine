@@ -22,6 +22,14 @@
     "enabled": true
   },
 
+  "kv_namespaces": [
+    {
+      "binding": "KV",
+      "id": "__change_me__",
+      "preview_id": "kv-dev"
+    }
+  ],
+
   // Environment variables
   "vars": {
     // Add your environment variables here

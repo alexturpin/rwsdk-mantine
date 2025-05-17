@@ -1,9 +1,10 @@
-import { apiRoutes } from "~/app/api/api"
+import { apiRoutes } from "~/api/api-routes"
 import { Document } from "~/app/Document"
-import { setCommonHeaders } from "~/app/headers"
+import { setCommonHeaders } from "~/headers"
 import { Home } from "~/app/pages/Home"
 import { prefix, render, route } from "rwsdk/router"
 import { defineApp } from "rwsdk/worker"
+import { PageLayout } from "~/app/layouts/PageLayout"
 
 export type AppContext = {}
 
