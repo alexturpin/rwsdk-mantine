@@ -1,11 +1,10 @@
-import { publicProcedure, router } from "~/api/trpc"
-import { inferRouterInputs, inferRouterOutputs } from "@trpc/server"
 import { env } from "cloudflare:workers"
-import { schema } from "~/db/db"
 import { desc } from "drizzle-orm"
 import { z } from "zod"
+import { schema } from "~/server/db"
+import { publicProcedure, router } from "~/server/trpc-utils"
 
-const r = router({
+export const routes = router({
   getValue: publicProcedure.query(
     async () => (await env.KV.get<number>("counter", { type: "json" })) || 0
   ),
@@ -30,9 +29,3 @@ const r = router({
     )
     .mutation(async ({ input, ctx }) => ctx.db.insert(schema.messages).values(input)),
 })
-
-export { r as router }
-
-export type Router = typeof r
-export type RouterInputs = inferRouterInputs<Router>
-export type RouterOutputs = inferRouterOutputs<Router>

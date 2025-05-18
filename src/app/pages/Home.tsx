@@ -20,10 +20,10 @@ export const Home = () => (
 )
 
 const IncrementButton = () => {
-  const getValue = useQuery(trpc.getValue.queryOptions())
+  const getValue = useQuery(trpc.sample.getValue.queryOptions())
   const incrementValue = useMutation(
-    trpc.incrementValue.mutationOptions({
-      onSuccess: () => queryClient.invalidateQueries({ queryKey: trpc.getValue.queryKey() }),
+    trpc.sample.incrementValue.mutationOptions({
+      onSuccess: () => queryClient.invalidateQueries({ queryKey: trpc.sample.getValue.queryKey() }),
     })
   )
 
@@ -38,11 +38,11 @@ const Chat = () => {
   const [name, setName] = useState("")
   const [message, setMessage] = useState("")
 
-  const getMessages = useQuery(trpc.getMessages.queryOptions())
+  const getMessages = useQuery(trpc.sample.getMessages.queryOptions())
   const addMessage = useMutation(
-    trpc.addMessage.mutationOptions({
+    trpc.sample.addMessage.mutationOptions({
       onSuccess: () => {
-        queryClient.invalidateQueries({ queryKey: trpc.getMessages.queryKey() })
+        queryClient.invalidateQueries({ queryKey: trpc.sample.getMessages.queryKey() })
         setMessage("")
       },
     })

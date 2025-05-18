@@ -2,7 +2,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
 import { createTRPCClient, httpBatchLink } from "@trpc/client"
 import { createTRPCOptionsProxy } from "@trpc/tanstack-react-query"
 import { ReactNode } from "react"
-import { Router } from "~/api/trpc-router"
+import { Router } from "~/server/trpc-router"
 
 export const queryClient = new QueryClient()
 

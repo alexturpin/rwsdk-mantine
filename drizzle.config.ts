@@ -19,7 +19,7 @@ const mode = z.enum(["local", "prod"]).default("local").parse(process.env.DB_MOD
 
 export default defineConfig({
   out: "./drizzle",
-  schema: "./src/db/schema.ts",
+  schema: "./src/server/db-schema.ts",
   dialect: "sqlite",
   ...(mode === "local"
     ? { dbCredentials: { url: getLocalD1() } }

@@ -1,9 +1,9 @@
 import { prefix, render, route } from "rwsdk/router"
 import { defineApp } from "rwsdk/worker"
-import { apiRoutes } from "~/api/api-routes"
+import { apiRoutes } from "~/server/routes"
 import { Document } from "~/app/Document"
 import { Home } from "~/app/pages/home"
-import { makeDB } from "~/db/db"
+import { makeDB } from "~/server/db"
 import { setCommonHeaders } from "~/headers"
 
 export type AppContext = {
