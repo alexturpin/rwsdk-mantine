@@ -5,6 +5,7 @@ import { useMutation, useQuery } from "@tanstack/react-query"
 import { useState } from "react"
 import { PageLayout } from "~/app/layouts/PageLayout"
 import { queryClient, trpc } from "~/app/trpc-client"
+import { IconSend } from "@tabler/icons-react"
 
 export const Home = () => (
   <PageLayout>
@@ -65,6 +66,7 @@ const Chat = () => {
         <Button
           onClick={() => addMessage.mutate({ name, message })}
           loading={getMessages.isLoading || addMessage.isPending}
+          rightSection={<IconSend size={16} />}
         >
           Send
         </Button>
