@@ -4,7 +4,7 @@ import { router } from "~/api/trpc-router"
 
 export const apiRoutes = [
   route("/health", () => Response.json({ status: "ok" })),
-  route("/trpc/*", ({ request, ctx }) =>
+  route("/trpc/*", async ({ request, ctx }) =>
     fetchRequestHandler({
       endpoint: "/api/trpc",
       req: request,

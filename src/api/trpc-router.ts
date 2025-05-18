@@ -1,6 +1,9 @@
 import { publicProcedure, router } from "~/api/trpc"
 import { inferRouterInputs, inferRouterOutputs } from "@trpc/server"
 import { env } from "cloudflare:workers"
+import { schema } from "~/db/db"
+import { desc } from "drizzle-orm"
+import { z } from "zod"
 
 const r = router({
   getValue: publicProcedure.query(
@@ -12,6 +15,20 @@ const r = router({
     await env.KV.put("counter", JSON.stringify(newValue))
     return newValue
   }),
+
+  getMessages: publicProcedure.query(async ({ ctx }) =>
+    ctx.db.query.messages.findMany({
+      orderBy: desc(schema.messages.createdAt),
+    })
+  ),
+  addMessage: publicProcedure
+    .input(
+      z.object({
+        name: z.string(),
+        message: z.string(),
+      })
+    )
+    .mutation(async ({ input, ctx }) => ctx.db.insert(schema.messages).values(input)),
 })
 
 export { r as router }

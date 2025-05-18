@@ -19,24 +19,35 @@
     "release": "rw-scripts ensure-deploy-env && npm run clean && npm run build && RWSDK_DEPLOY=1 wrangler deploy",
     "generate": "rw-scripts ensure-env && wrangler types",
     "check": "npm run generate && npm run types",
-    "types": "tsc"
+    "types": "tsc",
+    "db:generate": "drizzle-kit generate",
+    "db:push": "drizzle-kit push",
+    "db:migrate": "drizzle-kit migrate",
+    "db:studio": "drizzle-kit studio"
   },
   "dependencies": {
     "@mantine/core": "^8.0.0",
     "@mantine/hooks": "^8.0.0",
+    "@tabler/icons-react": "^3.33.0",
     "@tanstack/react-query": "^5.76.1",
     "@trpc/client": "^11.1.2",
     "@trpc/server": "^11.1.2",
     "@trpc/tanstack-react-query": "^11.1.2",
-    "rwsdk": "0.0.82"
+    "dotenv": "^16.5.0",
+    "drizzle-orm": "^0.43.1",
+    "rwsdk": "0.0.82",
+    "zod": "^3.24.4"
   },
   "devDependencies": {
     "@types/node": "^22.14.0",
     "@types/react": "^19.1.2",
     "@types/react-dom": "^19.1.2",
+    "better-sqlite3": "^11.10.0",
+    "drizzle-kit": "^0.31.1",
     "postcss": "^8.5.3",
     "postcss-preset-mantine": "^1.17.0",
     "postcss-simple-vars": "^7.0.1",
+    "tsx": "^4.19.4",
     "typescript": "^5.8.3",
     "vite": "^6.2.6",
     "wrangler": "^4.14.1"

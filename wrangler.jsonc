@@ -30,6 +30,14 @@
     }
   ],
 
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_id": "__change_me__",
+      "preview_database_id": "db-dev"
+    }
+  ],
+
   // Environment variables
   "vars": {
     // Add your environment variables here
