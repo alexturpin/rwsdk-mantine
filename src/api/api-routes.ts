@@ -10,6 +10,9 @@ export const apiRoutes = [
       req: request,
       router,
       createContext: () => ctx,
+      onError({ error }) {
+        console.error(error)
+      },
     })
   ),
 ]
