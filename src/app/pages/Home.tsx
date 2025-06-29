@@ -5,17 +5,11 @@ import { useMutation, useQuery } from "@tanstack/react-query"
 import { useState } from "react"
 import { PageLayout } from "~/app/layouts/PageLayout"
 import { queryClient, trpc } from "~/app/trpc-client"
-import { IconSend } from "@tabler/icons-react"
 
 export const Home = () => (
-  <PageLayout>
-    <Container>
-      <Title order={1} mb="lg">
-        rwsdk starter
-      </Title>
-      <IncrementButton />
-      <Chat />
-    </Container>
+  <PageLayout title="rwsdk starter">
+    <IncrementButton />
+    <Chat />
   </PageLayout>
 )
 
@@ -24,7 +18,7 @@ const IncrementButton = () => {
   const incrementValue = useMutation(
     trpc.sample.incrementValue.mutationOptions({
       onSuccess: () => queryClient.invalidateQueries({ queryKey: trpc.sample.getValue.queryKey() }),
-    })
+    }),
   )
 
   return (
@@ -45,7 +39,7 @@ const Chat = () => {
         queryClient.invalidateQueries({ queryKey: trpc.sample.getMessages.queryKey() })
         setMessage("")
       },
-    })
+    }),
   )
 
   return (
@@ -66,7 +60,6 @@ const Chat = () => {
         <Button
           onClick={() => addMessage.mutate({ name, message })}
           loading={getMessages.isLoading || addMessage.isPending}
-          rightSection={<IconSend size={16} />}
         >
           Send
         </Button>

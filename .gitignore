@@ -9,7 +9,6 @@ pnpm-debug.log*
 
 # Environment variables
 .env
-.dev.vars
 
 # Vite build output
 dist

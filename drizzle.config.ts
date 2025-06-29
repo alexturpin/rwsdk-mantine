@@ -4,10 +4,10 @@ import { readdirSync } from "fs"
 import { resolve } from "path"
 import { z } from "zod"
 
-const getLocalD1 = () => {
+export const getLocalD1 = () => {
   const basePath = resolve(".wrangler")
   const dbFile = readdirSync(basePath, { encoding: "utf-8", recursive: true }).find((f) =>
-    f.endsWith(".sqlite")
+    f.endsWith(".sqlite"),
   )
 
   if (!dbFile) throw new Error(`.sqlite file not found in ${basePath}`)

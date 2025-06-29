@@ -1,6 +1,7 @@
 import styles from "@mantine/core/styles.css?url"
+import { ReactNode } from "react"
 
-export const Document: React.FC<{ children: React.ReactNode }> = ({ children }) => (
+export const Document = ({ children }: { children: ReactNode }) => (
   <html lang="en" data-mantine-color-scheme="dark">
     <head>
       <meta charSet="utf-8" />
