@@ -68,10 +68,10 @@ const scrape = async ({ packageName }: { packageName: keyof typeof scrapers }) =
       const currentUrl = pagesToVisit.pop()
       if (!currentUrl) break
 
-      console.log(`Scraping ${currentUrl}`)
-
       if (visitedPages.has(currentUrl)) continue
       visitedPages.add(currentUrl)
+
+      console.log(`Scraping ${currentUrl}`)
 
       const page = await browser.newPage()
       await page.goto(currentUrl, { waitUntil: "networkidle0" })
